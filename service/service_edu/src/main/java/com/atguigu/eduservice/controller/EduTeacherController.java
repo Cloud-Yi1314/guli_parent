@@ -127,7 +127,7 @@ public class EduTeacherController {
     }
 
     //6.根据讲师id进行查询
-    @PostMapping(value = "getTeacher/{id}")
+    @GetMapping(value = "getTeacher/{id}")
     public R getTeacher(@PathVariable String id){
         EduTeacher eduTeacher = teacherService.getById(id);
         return R.ok().data("teacher",eduTeacher);
