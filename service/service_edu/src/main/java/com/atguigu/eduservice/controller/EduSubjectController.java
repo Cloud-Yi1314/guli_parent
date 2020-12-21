@@ -1,32 +1,38 @@
-package com.atguigu.oss.controller;
+package com.atguigu.eduservice.controller;
+
 
 import com.atguigu.commonutils.R;
-import com.atguigu.oss.service.OssService;
+import com.atguigu.eduservice.service.EduSubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
+ * <p>
+ * 课程科目 前端控制器
+ * </p>
+ *
  * @author YiCloud
- * @date 2020/12/19 - 23:28
+ * @since 2020-12-21
  */
 @RestController
-@RequestMapping("/eduoss/fileoss")
+@RequestMapping("/eduservice/subject")
 @CrossOrigin
-public class OssController {
+public class EduSubjectController {
 
     @Autowired
-    private OssService ossService;
+    private EduSubjectService subjectService;
 
-    //上传头像的方法
-    @PostMapping
-    public R uploadOssFile(MultipartFile file){
-        //获取上传文件
-        String url = ossService.uploadOssFile(file);
-        return R.ok().data("url",url);
+    //添加课程分类
+    @PostMapping("addSubject")
+    public R addSubject(MultipartFile file){
+        subjectService.saveSubject(file,subjectService);
+        return R.ok();
     }
 
 }
+
