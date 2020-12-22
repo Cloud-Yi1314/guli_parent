@@ -43,7 +43,7 @@ public class SubjectExcelListener extends AnalysisEventListener<SubjectData> {
         if(existTwoSubject == null){
             existTwoSubject = new EduSubject();
             existTwoSubject.setParentId(pid);
-            existTwoSubject.setTitle(subjectData.getOneSubjectName());
+            existTwoSubject.setTitle(subjectData.getTwoSubjectName());
             subjectService.save(existTwoSubject);
         }
     }
